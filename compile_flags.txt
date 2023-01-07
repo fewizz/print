@@ -1,0 +1,9 @@
+-std=c++2b
+-nostdinc++
+-nostdinc
+-I../core/include
+-I../windows-wrapper/include
+-I../posix-wrapper/include
+-Iinclude
+-Wall
+-Wextra

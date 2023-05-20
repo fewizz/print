@@ -11,7 +11,7 @@ namespace print {
 
 template<nuint BufferSize>
 class buffer {
-	list<array<storage<char>, BufferSize>> buff_{};
+	list<array<storage<uint1a>, BufferSize>> buff_{};
 	handle<posix::file> handle_;
 
 public:
@@ -68,7 +68,7 @@ public:
 
 	buffer& number(unsigned_integer auto number, number_base base = 10) {
 		nuint count = 0;
-		::number{ number}.for_each_digit(base, [&](nuint) { ++count; });
+		::number{ number }.for_each_digit(base, [&](nuint) { ++count; });
 		char digits[count];
 		count = 0;
 		::number{ number }.for_each_digit(base, [&](nuint digit) {

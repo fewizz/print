@@ -11,7 +11,7 @@ namespace print {
 
 template<nuint BufferSize>
 class buffer {
-	list<array<storage<uint1a>, BufferSize>> buff_{};
+	list<array<uint1a, BufferSize>> buff_{};
 	handle<posix::file> handle_;
 
 public:
@@ -75,6 +75,11 @@ public:
 			digits[count++] = (char)digit + (digit <= 9 ? '0' : 'A' - 10);
 		});
 		(*this)(span{ digits, count });
+		return *this;
+	}
+
+	buffer& operator () (const char ch) {
+		(*this)(array{ ch });
 		return *this;
 	}
 

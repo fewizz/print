@@ -62,7 +62,7 @@ public:
 
 	template<nuint Size>
 	buffer& operator () (const char (&str_array)[Size]) {
-		(*this)(c_string{ str_array });
+		(*this) (span{ str_array, Size - 1 });
 		return *this;
 	};
 
@@ -91,6 +91,12 @@ public:
 	buffer& hex(unsigned_integer auto number) {
 		(*this)("0x");
 		this->number(number, 16);
+		return *this;
+	}
+
+	buffer& bin(unsigned_integer auto number) {
+		(*this)("0b");
+		this->number(number, 2);
 		return *this;
 	}
 
